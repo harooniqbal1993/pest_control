@@ -1,0 +1,15 @@
+{
+  "originHash" : "52a791e7bb1284afd91ce5ca920d6a12250ec18397b51d9d45ee8fd917af6427",
+  "pins" : [
+    {
+      "identity" : "swiftsignatureview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alankarmisra/SwiftSignatureView.git",
+      "state" : {
+        "revision" : "04ce145272c47d9b87657af3cc3d12bd26de6745",
+        "version" : "3.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}
