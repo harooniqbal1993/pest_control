@@ -218,5 +218,8 @@ extension UIView {
         } else {
             return ""
         }
+        
+//        let activityViewController = UIActivityViewController(activityItems: ["Name To Present to User", data], applicationActivities: nil)
+//        present(activityViewController, animated: true, completion: nil)
     }
 }

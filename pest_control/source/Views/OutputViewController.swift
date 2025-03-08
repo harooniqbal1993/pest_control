@@ -19,7 +19,8 @@ class OutputViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let myView = Bundle.main.loadNibNamed("PDFLayout", owner: nil, options: nil)![0] as! UIView
         if let view = myView as? PDFLayout {
-            view.fillData()
+//            view.fillData()
+            view.initiate()
         }
 //        scrollView.contentSize.width = myView.frame.width
 //        print(myView.frame.width)

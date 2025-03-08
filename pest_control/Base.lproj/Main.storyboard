@@ -1613,7 +1613,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMd-F7-F1y">
-                                        <rect key="frame" x="0.0" y="0.0" width="1074" height="1400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1074" height="1500"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ds9-IA-gdO">
                                                 <rect key="frame" x="16" y="16" width="35" height="35"/>
@@ -1635,7 +1635,7 @@
                                         <constraints>
                                             <constraint firstItem="ds9-IA-gdO" firstAttribute="leading" secondItem="HMd-F7-F1y" secondAttribute="leading" constant="16" id="Ebf-RM-1b9"/>
                                             <constraint firstAttribute="width" constant="1074" id="TRK-S2-MHP"/>
-                                            <constraint firstAttribute="height" constant="1400" id="hH1-Yk-oZW"/>
+                                            <constraint firstAttribute="height" constant="1500" id="hH1-Yk-oZW"/>
                                             <constraint firstItem="ds9-IA-gdO" firstAttribute="top" secondItem="HMd-F7-F1y" secondAttribute="top" constant="16" id="jt9-7j-M6D"/>
                                         </constraints>
                                     </view>
@@ -1669,7 +1669,7 @@
     </scenes>
     <resources>
         <image name="arrowshape.down.fill" catalog="system" width="123" height="128"/>
-        <image name="checkbox-unchecked" width="20" height="20"/>
+        <image name="checkbox-unchecked" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -1677,10 +1677,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

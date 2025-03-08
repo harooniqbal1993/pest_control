@@ -10,6 +10,8 @@
 		430261382D64A4050065BB83 /* PestControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430261372D64A4050065BB83 /* PestControlViewController.swift */; };
 		4302613A2D64A4450065BB83 /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430261392D64A4450065BB83 /* PersonalInformationViewController.swift */; };
 		4302613C2D64A4780065BB83 /* AssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302613B2D64A4780065BB83 /* AssessmentViewController.swift */; };
+		4317D3742D7CC9BD00F67C72 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317D3732D7CC9BD00F67C72 /* Extension+UIView.swift */; };
+		4317D3762D7CDCA500F67C72 /* Extension+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317D3752D7CDCA500F67C72 /* Extension+UILabel.swift */; };
 		433F285B2D645E71007647F1 /* PDFLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433F285A2D645E71007647F1 /* PDFLayout.swift */; };
 		433F285D2D6464A8007647F1 /* PDFLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433F285C2D6464A8007647F1 /* PDFLayout.xib */; };
 		433F285F2D6467DC007647F1 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433F285E2D6467DC007647F1 /* OutputViewController.swift */; };
@@ -52,6 +54,8 @@
 		430261372D64A4050065BB83 /* PestControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PestControlViewController.swift; sourceTree = "<group>"; };
 		430261392D64A4450065BB83 /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		4302613B2D64A4780065BB83 /* AssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewController.swift; sourceTree = "<group>"; };
+		4317D3732D7CC9BD00F67C72 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		4317D3752D7CDCA500F67C72 /* Extension+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UILabel.swift"; sourceTree = "<group>"; };
 		433F285A2D645E71007647F1 /* PDFLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFLayout.swift; sourceTree = "<group>"; };
 		433F285C2D6464A8007647F1 /* PDFLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PDFLayout.xib; sourceTree = "<group>"; };
 		433F285E2D6467DC007647F1 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4317D3722D7CC98A00F67C72 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4317D3732D7CC9BD00F67C72 /* Extension+UIView.swift */,
+				4317D3752D7CDCA500F67C72 /* Extension+UILabel.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		433F28572D645D46007647F1 /* PDFLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +180,7 @@
 		43A72BE02D622AD400E50E96 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				4317D3722D7CC98A00F67C72 /* Extensions */,
 				43D92D362D631687003851DA /* Views */,
 			);
 			path = source;
@@ -329,11 +343,13 @@
 			files = (
 				430261382D64A4050065BB83 /* PestControlViewController.swift in Sources */,
 				4302613A2D64A4450065BB83 /* PersonalInformationViewController.swift in Sources */,
+				4317D3742D7CC9BD00F67C72 /* Extension+UIView.swift in Sources */,
 				4302613C2D64A4780065BB83 /* AssessmentViewController.swift in Sources */,
 				43D92D382D6316A6003851DA /* ChemicalUsedViewController.swift in Sources */,
 				43A72BB22D622AB500E50E96 /* ViewController.swift in Sources */,
 				43A72BB82D622AB500E50E96 /* pest_control.xcdatamodeld in Sources */,
 				43D92D3A2D6320DA003851DA /* PDFViewController.swift in Sources */,
+				4317D3762D7CDCA500F67C72 /* Extension+UILabel.swift in Sources */,
 				43A72BAE2D622AB500E50E96 /* AppDelegate.swift in Sources */,
 				433F285F2D6467DC007647F1 /* OutputViewController.swift in Sources */,
 				43B14B692D649F8D00FF6237 /* PageViewController.swift in Sources */,
@@ -522,6 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 48ZQ7CV8U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pest_control/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -529,16 +546,21 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.movie.test.pest-control";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lazer.pest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -549,6 +571,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 48ZQ7CV8U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pest_control/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -556,16 +579,21 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.movie.test.pest-control";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lazer.pest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
