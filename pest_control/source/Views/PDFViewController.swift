@@ -20,395 +20,605 @@ class PDFViewController: UIViewController {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lazer Pest Control - Treatment Report</title>
         <style>
-            body {
+            * {
+                box-sizing: border-box;
                 font-family: Arial, sans-serif;
                 margin: 0;
-                padding: 20px;
-                box-sizing: border-box;
+                padding: 0;
             }
+            
+            body {
+                font-size: 14px;
+                line-height: 1.4;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            
+            .logo {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .logo h1 {
+                font-size: 48px;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            
+            .logo-text {
+                position: relative;
+            }
+            
+            .bolt {
+                position: absolute;
+                top: 10px;
+                right: 0;
+                color: red;
+                font-size: 60px;
+                transform: rotate(30deg);
+                transform-origin: center;
+                font-weight: bold;
+                line-height: 0.7;
+            }
+            
+            .subtitle {
+                color: red;
+                font-size: 16px;
+                margin-top: -10px;
+                margin-left: 110px;
+            }
+            
             .header {
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
                 margin-bottom: 20px;
             }
-            .logo {
-                max-width: 350px;
-                display: flex;
-                align-items: center;
-            }
-            .logo-text {
-                font-size: 40px;
-                font-weight: bold;
-                letter-spacing: 2px;
-            }
-            .report-title {
+            
+            .title {
+                text-align: right;
                 font-size: 28px;
                 font-weight: bold;
-                text-align: right;
-            }
-            .container {
-                width: 100%;
-                max-width: 900px;
-                margin: 0 auto;
-            }
-            .section {
-                border: 1px solid #000;
                 margin-bottom: 15px;
+            }
+            
+            .form-section {
+                border: 1px solid #000;
                 padding: 10px;
+                margin-bottom: 15px;
             }
-            .section-header {
-                text-align: center;
-                color: #E02020;
+            
+            .form-section-header {
+                background-color: #fff;
+                color: red;
                 font-weight: bold;
+                text-align: center;
                 margin-bottom: 10px;
+                font-size: 16px;
             }
-            .row {
+            
+            .form-row {
                 display: flex;
-                margin-bottom: 10px;
+                margin-bottom: 8px;
             }
-            .col {
-                flex: 1;
-            }
-            .input-group {
-                margin-bottom: 10px;
+            
+            .form-check {
                 display: flex;
                 align-items: center;
+                margin-right: 10px;
             }
-            input[type="text"], input[type="number"] {
-                width: 100%;
-                padding: 5px;
-                border: 1px solid #999;
-            }
+            
             input[type="checkbox"] {
-                margin-right: 8px;
+                margin-right: 5px;
+                width: 15px;
+                height: 15px;
+                border: 1px solid #000;
             }
-            .divider {
-                border-bottom: 1px dashed #999;
-                margin: 10px 0;
+            
+            input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"] {
+                border: none;
+                border-bottom: 1px solid #000;
+                padding: 3px 0;
+                width: 100%;
+                margin-bottom: 5px;
             }
-            .section-title {
+            
+            label {
+                margin-right: 5px;
+            }
+            
+            .form-column {
+                flex: 1;
+                padding: 0 5px;
+            }
+            
+            .form-group {
+                margin-bottom: 10px;
+            }
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+            }
+            
+            table, th, td {
+                border: 1px solid #000;
+            }
+            
+            th, td {
+                padding: 4px;
+                text-align: left;
+            }
+            
+            th {
+                background-color: #f2f2f2;
+            }
+            
+            .chemical-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+                align-items: center;
+            }
+            
+            .chemical-name {
+                flex: 2;
+            }
+            
+            .units-box {
+                border: 1px solid #000;
+                width: 50px;
+                height: 20px;
+                flex: 1;
+                text-align: center;
+            }
+            
+            .signature-row {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+            
+            .signature-column {
+                flex: 1;
+            }
+            
+            .footer {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
                 font-weight: bold;
-                color: #E02020;
             }
-            .chemicals {
-                display: grid;
-                grid-template-columns: 3fr 1fr;
-                gap: 5px;
+            
+            .red-text {
+                color: red;
             }
-            .inspection-area, .recommendation-area {
+            
+            .text-area {
                 width: 100%;
                 min-height: 120px;
                 border: none;
-                border-bottom: 1px dashed #999;
-                resize: none;
-                margin: 5px 0;
-            }
-            .assessment-table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            .assessment-table th, .assessment-table td {
-                border: 1px solid #000;
-                padding: 5px;
-                text-align: left;
-            }
-            .footer-text {
-                font-size: 10px;
-                margin-top: 10px;
-            }
-            .signature-line {
                 border-bottom: 1px solid #000;
-                margin-top: 20px;
-                padding-bottom: 5px;
+                margin-bottom: 10px;
+                padding: 5px 0;
+                resize: vertical;
             }
-            .red-title {
-                color: #E02020;
-                font-weight: bold;
-                margin: 10px 0;
+            
+            .bait-plan {
+                border: 1px solid #000;
+                margin: 20px 0;
+                padding: 10px;
+                min-height: 400px;
+            }
+            
+            .bait-plan h2 {
                 text-align: center;
+                margin-bottom: 20px;
+                font-size: 20px;
             }
-            .bold-red {
-                color: #E02020;
+            
+            .precautions {
+                margin: 20px 0;
+            }
+            
+            .precautions h3 {
+                margin-bottom: 10px;
+            }
+            
+            .precautions p {
+                margin-bottom: 5px;
+            }
+            
+            .disclaimer {
+                margin: 20px 0;
+            }
+            
+            .disclaimer h2 {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 20px;
+            }
+            
+            .bold {
                 font-weight: bold;
             }
-            .lightning {
-                color: #E02020;
-                font-size: 40px;
+            
+            .contract-details {
                 font-weight: bold;
-                margin: 0 5px;
-                transform: rotate(20deg);
-                display: inline-block;
+                text-align: center;
+                margin-bottom: 10px;
+                color: red;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .header {
+                    flex-direction: column;
+                }
+                
+                .title {
+                    text-align: center;
+                    margin-top: 15px;
+                }
+                
+                .form-row {
+                    flex-direction: column;
+                }
+                
+                .form-column {
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+                
+                .signature-row {
+                    flex-direction: column;
+                }
+                
+                .signature-column {
+                    margin-bottom: 15px;
+                }
+                
+                .footer {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                
+                .footer div {
+                    margin-bottom: 10px;
+                }
+            }
+            
+            .health-safety-table td {
+                padding: 4px;
+                font-size: 13px;
             }
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="page">
+            <!-- Header with Logo -->
             <div class="header">
                 <div class="logo">
-                    <div class="logo-text">LA<span class="lightning">&#x2B24;</span>ER</div>
+                    <div class="logo-text">
+                        <h1>LAZER</h1>
+                        <div class="bolt">Z</div>
+                    </div>
+                    <div class="subtitle">PEST CONTROL</div>
                 </div>
-                <div class="report-title">TREATMENT REPORT</div>
+                <div class="title">TREATMENT REPORT</div>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="input-group">
-                        <input type="checkbox" id="routine">
+            
+            <!-- Main Form -->
+            <div class="form-section">
+                <div class="contract-details">CONTRACT DETAILS OF BUSINESS / OCCUPIER:</div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Telephone:</label>
+                    <input type="tel" id="telephone" name="telephone">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address for treatment:</label>
+                    <input type="text" id="address" name="address">
+                    <input type="text" id="address2" name="address2">
+                </div>
+                <div class="form-group">
+                    <label for="postcode">Postcode</label>
+                    <input type="text" id="postcode" name="postcode">
+                </div>
+                <table>
+                    <tr>
+                        <td>Time of treatment</td>
+                        <td>Date</td>
+                    </tr>
+                    <tr>
+                        <td><input type="time" id="treatment_time" name="treatment_time"></td>
+                        <td><input type="date" id="treatment_date" name="treatment_date"></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-check">
+                        <input type="checkbox" id="routine" name="visit_type" value="routine">
                         <label for="routine">Routine</label>
                     </div>
-                    <div class="input-group">
-                        <input type="checkbox" id="followup">
-                        <label for="followup">Follow Up</label>
+                    <div class="form-check">
+                        <input type="checkbox" id="follow_up" name="visit_type" value="follow_up">
+                        <label for="follow_up">Follow Up</label>
                     </div>
-                    <div class="input-group">
-                        <input type="checkbox" id="callout">
-                        <label for="callout">Call Out</label>
-                    </div>
-                    <div class="input-group">
-                        <label>Name of Landlord / Agency:</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-group">
-                        <label>Size of Property:</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-group">
-                        <label>Agreed Price:</label>
-                        <input type="text" style="width: 60%;">
-                        <span style="margin-left: 10px;">Received</span>
-                        <input type="checkbox" style="margin-left: 5px;">
-                    </div>
-                    <div class="input-group">
-                        <label>Agency or Landlord Will Pay:</label>
-                        <input type="text">
+                    <div class="form-check">
+                        <input type="checkbox" id="call_out" name="visit_type" value="call_out">
+                        <label for="call_out">Call Out</label>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="input-group">
-                        <label>Report No:</label>
-                        <input type="text">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="report_no">Report No:</label>
+                        <input type="text" id="report_no" name="report_no">
                     </div>
-                    <div class="input-group">
-                        <label>Zone:</label>
-                        <input type="text">
+                    <div class="form-group">
+                        <label for="zone">Zone:</label>
+                        <input type="text" id="zone" name="zone">
                     </div>
                 </div>
             </div>
-
-            <div class="section">
-                <div class="section-header">CONTRACT DETAILS OF BUSINESS / OCCUPIER:</div>
-                <div class="input-group">
-                    <label>Name:</label>
-                    <input type="text">
+            
+            <div class="form-group">
+                <label for="landlord">Name of Landlord / Agency:</label>
+                <input type="text" id="landlord" name="landlord">
+            </div>
+            
+            <div class="form-group">
+                <label for="property_size">Size of Property:</label>
+                <input type="text" id="property_size" name="property_size">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="agreed_price">Agreed Price</label>
+                    <input type="text" id="agreed_price" name="agreed_price">
                 </div>
-                <div class="input-group">
-                    <label>Telephone:</label>
-                    <input type="text">
-                </div>
-                <div class="input-group">
-                    <label>Email:</label>
-                    <input type="text">
-                </div>
-                <div class="input-group">
-                    <label>Address for treatment:</label>
-                    <input type="text">
-                </div>
-                <div class="input-group">
-                    <input type="text">
-                </div>
-                <div class="input-group">
-                    <label>Postcode:</label>
-                    <input type="text">
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label>Time of treatment</label>
-                    </div>
-                    <div class="col">
-                        <label>Date</label>
+                <div class="form-column">
+                    <div class="form-check">
+                        <input type="checkbox" id="received" name="received">
+                        <label for="received">Received</label>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="section">
-                        <div class="section-header">TYPES OF PEST</div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group">
-                                    <input type="checkbox" id="mice">
+            
+            <div class="form-group">
+                <label for="agency_pay">Agency or Landlord Will Pay:</label>
+                <input type="text" id="agency_pay" name="agency_pay">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-section">
+                        <div class="form-section-header">TYPES OF PEST</div>
+                        <div class="form-row">
+                            <div class="form-column">
+                                <div class="form-check">
+                                    <input type="checkbox" id="mice" name="pest_type" value="mice">
                                     <label for="mice">Mice</label>
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="rats">
+                                <div class="form-check">
+                                    <input type="checkbox" id="rats" name="pest_type" value="rats">
                                     <label for="rats">Rats</label>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="input-group">
-                                    <input type="checkbox" id="ants">
+                            <div class="form-column">
+                                <div class="form-check">
+                                    <input type="checkbox" id="ants" name="pest_type" value="ants">
                                     <label for="ants">Ants</label>
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="cockroach">
+                                <div class="form-check">
+                                    <input type="checkbox" id="cockroach" name="pest_type" value="cockroach">
                                     <label for="cockroach">Cockroach</label>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="input-group">
-                                    <input type="checkbox" id="fleas">
+                            <div class="form-column">
+                                <div class="form-check">
+                                    <input type="checkbox" id="fleas" name="pest_type" value="fleas">
                                     <label for="fleas">Fleas</label>
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="bedbug">
+                                <div class="form-check">
+                                    <input type="checkbox" id="bedbug" name="pest_type" value="bedbug">
                                     <label for="bedbug">Bedbug</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <label>Other:</label>
-                            <input type="text">
+                        <div class="form-group">
+                            <label for="other_pest">Other:</label>
+                            <input type="text" id="other_pest" name="other_pest">
                         </div>
-                        <div class="section-title">CHEMICAL USED:</div>
-                        <div class="chemicals">
-                            <div>Difenacoum</div>
-                            <div><input type="text" placeholder="UNITS"></div>
-                            <div>Brodifacoum</div>
-                            <div><input type="text" placeholder="UNITS"></div>
-                            <div>Bromadiolone</div>
-                            <div><input type="text" placeholder="UNITS"></div>
+                        
+                        <div class="form-section-header">CHEMICAL USED:</div>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Difenacoum</div>
+                            <div>UNITS</div>
+                            <div class="units-box"></div>
                         </div>
-                        <div class="input-group">
-                            <input type="checkbox" id="indoxacarb">
-                            <label for="indoxacarb">Indoxacarb</label>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Brodifacoum</div>
+                            <div>UNITS</div>
+                            <div class="units-box"></div>
                         </div>
-                        <div class="input-group">
-                            <input type="checkbox" id="bendiocarb">
-                            <label for="bendiocarb">Bendiocarb</label>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Bromadiolone</div>
+                            <div>UNITS</div>
+                            <div class="units-box"></div>
                         </div>
-                        <div class="input-group">
-                            <input type="checkbox" id="cypermethrin">
-                            <label for="cypermethrin">Cypermethrin</label>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Indoxacarb</div>
+                            <div class="form-check">
+                                <input type="checkbox" id="indoxacarb" name="chemical" value="indoxacarb">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <input type="checkbox" id="alphacypermethrin">
-                            <label for="alphacypermethrin">Alpha-cypermethrin + tetramethrin</label>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Bendiocarb</div>
+                            <div class="form-check">
+                                <input type="checkbox" id="bendiocarb" name="chemical" value="bendiocarb">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <input type="checkbox" id="fenprieimidacloprid">
-                            <label for="fenprieimidacloprid">Fenprie Imidacloprid</label>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Cypermethrin</div>
+                            <div class="form-check">
+                                <input type="checkbox" id="cypermethrin" name="chemical" value="cypermethrin">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <input type="checkbox" id="other-chemical">
-                            <label for="other-chemical">Other</label>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Alpha-cypermethrin + tetramethrin</div>
+                            <div class="form-check">
+                                <input type="checkbox" id="alpha_cypermethrin" name="chemical" value="alpha_cypermethrin">
+                            </div>
+                        </div>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Fenprie Imidacloprid</div>
+                            <div class="form-check">
+                                <input type="checkbox" id="fenprie" name="chemical" value="fenprie">
+                            </div>
+                        </div>
+                        <div class="chemical-row">
+                            <div class="chemical-name">Other</div>
+                            <div class="form-check">
+                                <input type="checkbox" id="other_chemical" name="chemical" value="other">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="section">
-                        <div class="section-header">HEALTH & SAFETY-ON SITE ASSESSMENT (MARK 'X')</div>
-                        <table class="assessment-table">
+                
+                <div class="form-column">
+                    <div class="form-section">
+                        <div class="form-section-header">HEALTH & SAFETY-ON SITE ASSESSMENT (MARK 'X')</div>
+                        <table class="health-safety-table">
                             <tr>
-                                <th>PRESENCE OF:</th>
-                                <th></th>
-                                <th>EVIDENCE OF INFESTATION:</th>
-                                <th></th>
+                                <td>PRESENCE OF:</td>
+                                <td>EVIDENCE OF INFESTATION:</td>
                             </tr>
                             <tr>
                                 <td>CHILDREN</td>
-                                <td><input type="text"></td>
                                 <td>BODIES</td>
-                                <td><input type="text"></td>
                             </tr>
                             <tr>
                                 <td>EMPLOYEES</td>
-                                <td><input type="text"></td>
                                 <td>DROPPINGS</td>
-                                <td><input type="text"></td>
                             </tr>
                             <tr>
                                 <td>PUBLIC</td>
-                                <td><input type="text"></td>
                                 <td>GNAWING</td>
-                                <td><input type="text"></td>
                             </tr>
                             <tr>
                                 <td>PET ANIMALS</td>
-                                <td><input type="text"></td>
                                 <td>SMEAR/RUNWAYS</td>
-                                <td><input type="text"></td>
                             </tr>
                             <tr>
                                 <td>PROTECTED WILDLIFE</td>
-                                <td><input type="text"></td>
                                 <td>HOLE IN GROUND</td>
-                                <td><input type="text"></td>
                             </tr>
                             <tr>
                                 <td>OPEN FOOD</td>
-                                <td><input type="text"></td>
                                 <td>SIGHTING</td>
-                                <td><input type="text"></td>
                             </tr>
                         </table>
+                        
                         <p>It is a legal requirement that before any pesticide is used an assessment of risk is carried out and that measures are taken to prevent or control exposure.</p>
                         <p>The instructions on the label must be carried out.</p>
-                        <div class="red-title">THE LABEL IS THE LAW</div>
+                        <p class="red-text bold">THE LABEL IS THE LAW</p>
                     </div>
                 </div>
             </div>
-
-            <div class="section">
-                <div class="section-header">INSPECTION</div>
-                <textarea class="inspection-area"></textarea>
-                <textarea class="inspection-area"></textarea>
-                <textarea class="inspection-area"></textarea>
-                <textarea class="inspection-area"></textarea>
+            
+            <div class="form-section">
+                <div class="form-section-header">INSPECTION</div>
+                <textarea class="text-area" id="inspection" name="inspection"></textarea>
             </div>
-
-            <div class="section">
-                <div class="section-header">RECOMMENDATION</div>
-                <textarea class="recommendation-area"></textarea>
-                <textarea class="recommendation-area"></textarea>
-                <textarea class="recommendation-area"></textarea>
-                <textarea class="recommendation-area"></textarea>
-                <div style="text-align: right;">Bait placement plan is on the back of page.</div>
+            
+            <div class="form-section">
+                <div class="form-section-header">RECOMMENDATION</div>
+                <textarea class="text-area" id="recommendation" name="recommendation"></textarea>
+                <p>Bait placement plan is on the back of page.</p>
             </div>
-
-            <div class="footer-text">
-                <p>I/We authorise your company to enter and carry out all necessary work to treat the infestation. I agree to comply with all terms, conditions & safety information at back of the page. After treatment for rodents it takes 3-4 weeks to get control of pest. It is customer's responsibility to make an appointment for the removal of baits. It is possible that rodents may die in inaccessible places and during decomposition they may cause a smell. Company cannot be held responsible for any costs involved for any remedial activity to rectify the problem.</p>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="input-group">
-                        <label>Owner/Tenant/Manager/Authorised Agent</label>
-                        <div class="signature-line"></div>
+            
+            <p>I/We authorise your company to enter and carry out all necessary work to treat the infestation. I agree to comply with all terms, conditions & safety information at back of the page. After treatment for rodents it takes 3-4 weeks to get control of pest. It is customer's responsibility to make an appointment for the removal of baits. It is possible that rodents may die in inaccessible places and during decomposition they may cause a smell. Company cannot be held responsible for any costs involved for any remedial activity to rectify the problem.</p>
+            
+            <div class="signature-row">
+                <div class="signature-column">
+                    <div class="form-group">
+                        <label for="owner_signature">Owner/Tenant/Manager/Authorised Agent</label>
+                        <input type="text" id="owner_signature" name="owner_signature">
                     </div>
                 </div>
-                <div class="col">
-                    <div class="input-group">
-                        <label>Print Name</label>
-                        <div class="signature-line"></div>
+                <div class="signature-column">
+                    <div class="form-group">
+                        <label for="owner_name">Print Name</label>
+                        <input type="text" id="owner_name" name="owner_name">
                     </div>
                 </div>
             </div>
-
-            <div class="row" style="margin-top: 20px;">
-                <div class="col">
-                    <div class="input-group">
-                        <label>Signed on behalf of company</label>
-                        <div class="signature-line"></div>
+            
+            <div class="signature-row">
+                <div class="signature-column">
+                    <div class="form-group">
+                        <label for="company_signature">Signed on behalf of company</label>
+                        <input type="text" id="company_signature" name="company_signature">
                     </div>
                 </div>
-                <div class="col">
-                    <div class="input-group">
-                        <label>Print Name</label>
-                        <div class="signature-line"></div>
+                <div class="signature-column">
+                    <div class="form-group">
+                        <label for="company_name">Print Name</label>
+                        <input type="text" id="company_name" name="company_name">
                     </div>
                 </div>
+            </div>
+            
+            <div class="footer">
+                <div class="red-text">TEL: 0786 362 6289</div>
+                <div class="red-text">WEB: WWW.LAZERPESTCONTROL.CO.UK</div>
+            </div>
+            
+            <!-- Page 2 -->
+            <div class="bait-plan">
+                <h2>BAIT PLACEMENT PLAN</h2>
+                <!-- Empty space for bait placement drawing -->
+            </div>
+            
+            <div class="precautions">
+                <h3>PRECAUTIONS FOR RODENT AND COCKROACH TREATMENT</h3>
+                <p>*All food items must be covered in lidded boxes.</p>
+                <p>*Contaminated food must be removed immediately.</p>
+                <p>*Clean the infected area with disinfectant cleaner.</p>
+                <p>*For businesses dealing with food stuff it is a legal requirement to stop selling food until infestation is cleared, As it may be an imminent risk to health under food laws in the UK.</p>
+                <p>*Do not touch or change the position of baits as it causes health hazards</p>
+                <p>*Do not wipe out the gel for at least 7 days</p>
+                
+                <h3>FOR SPLITS /EXPOSED BAITS</h3>
+                <p>Wear protective gloves, place the bait in a plastic bag and keep it safely locked away.</p>
+                
+                <h3>FOR RAT OR MOUSE BODIES</h3>
+                <p>Wear protective gloves, either dispose of by incineration or deep burying or place safely away from children and animals.</p>
+                
+                <h3>USE OF GLUE BOARD</h3>
+                <p>There will be separate charge for providing glue boards, customer will be responsible to dispatch the trapped rodent quickly and humanly. This may be achieved by quick and positive dislocation of the mice. Drowning is not a acceptable method of dispatch.</p>
+                
+                <h3>AT THEIR TREATMENT VISITS OUR STAFF WILL:</h3>
+                <p>Place baits in protected situation and other pesticide materials in appropriate situations.</p>
+            </div>
+            
+            <div class="disclaimer">
+                <h2>DISCLAIMER</h2>
+                <p>The client accepts that some treated surface may be sprayed with approved insecticides. This may result in many areas becoming wet for a period of time and some surfaces may not become dry until after several hours. The client is advised in advance that whilst spraying does not normally cause damage to carpets, walls, picture frames, other household items or wooden/laminate flooring, it may be possible that some items are affected following spraying. If the client believes that the risk of any item becoming severely damaged is high then they must advise the pest control technician immediately. Such items must be removed, as necessary, by the client before the treatment commences.</p>
+                <p>Lazer Pest Control LTD accepts no liability for such damage, if the client fails to notify LPCL of a recurrence of infestation for any treatments (unless specified in writing), after a period of 6 weeks from the first visit, then a new charge will be payable if the client requests further visits. It is also the client's responsibility to ensure that all proofing and hygiene requirements are satisfied after treatment as failure to do this might result in re-infestatiopn. If the client fails to follow the terms/guidelines above then LPCL accepts no responsibility for the treatment outcome.</p>
             </div>
         </div>
     </body>
