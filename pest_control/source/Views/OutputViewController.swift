@@ -35,6 +35,9 @@ class OutputViewController: UIViewController {
     @IBAction func downloadTapped(_ sender: UIButton) {
         let path = contentView.exportAsPdfFromView()
         print(path)
+        
+        let activityViewController = UIActivityViewController(activityItems: ["Lazer Pest Control", contentView.pdfViewToData()], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
     
 }

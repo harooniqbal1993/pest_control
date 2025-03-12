@@ -197,9 +197,9 @@ class PDFLayout: UIView {
         recommendationValueLabel.text = outputData.recommendation
         
         inspectionValueLabel.underline()
-        inspectionValueLabel.underlineAndLineHeight(lineHeightMultiply: 1.3)
+        inspectionValueLabel.underlineAndLineHeight(lineHeightMultiply: 1.8)
         recommendationValueLabel.underline()
-        recommendationValueLabel.underlineAndLineHeight(lineHeightMultiply: 1.3)
+        recommendationValueLabel.underlineAndLineHeight(lineHeightMultiply: 1.8)
         
         
         workerNameLabel.text = outputData.signatureData?.workerName

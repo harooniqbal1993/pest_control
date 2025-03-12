@@ -16,8 +16,11 @@ struct PestType {
     var bedbug: Bool = false
     
     var difenacoumUnit: String? = nil
+    var difenacoumUnit2: String? = nil
     var brodifacoumUnit: String? = nil
+    var brodifacoumUnit2: String? = nil
     var bromadioloneUnit: String? = nil
+    var bromadioloneUnit2: String? = nil
     
     var difenacoum: Bool = false
     var brodifacoum: Bool = false
@@ -42,8 +45,11 @@ class ChemicalUsedViewController: UIViewController {
     @IBOutlet weak var bedbugCheckbox: UIButton!
     @IBOutlet weak var otherTextField: UITextField!
     @IBOutlet weak var difanacoumUnitTextfield: UITextField!
+    @IBOutlet weak var difanacoumUnitTextfield2: UITextField!
     @IBOutlet weak var brodifacoumUnitTextfield: UITextField!
+    @IBOutlet weak var brodifacoumUnitTextfield2: UITextField!
     @IBOutlet weak var bromadioloneUnitTextfield: UITextField!
+    @IBOutlet weak var bromadioloneUnitTextfield2: UITextField!
     @IBOutlet weak var IndoxacarbCheckbox: UIButton!
     @IBOutlet weak var bendiocarbCheckbox: UIButton!
     @IBOutlet weak var cypermethrinCheckbox: UIButton!
@@ -182,10 +188,16 @@ extension ChemicalUsedViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == difanacoumUnitTextfield {
             pestType?.difenacoumUnit = textField.text
+        } else if textField == difanacoumUnitTextfield2 {
+            pestType?.difenacoumUnit2 = textField.text
         } else if textField == brodifacoumUnitTextfield {
             pestType?.brodifacoumUnit = textField.text
-        } else {
+        } else if textField == brodifacoumUnitTextfield2 {
+            pestType?.brodifacoumUnit2 = textField.text
+        } else if textField == bromadioloneUnitTextfield {
             pestType?.bromadioloneUnit = textField.text
+        } else {
+            pestType?.bromadioloneUnit2 = textField.text
         }
     }
 }
@@ -205,6 +217,17 @@ extension UIView {
         UIGraphicsEndPDFContext()
         return self.saveViewPdf(data: pdfData)
         
+    }
+    
+    func pdfViewToData() -> Data {
+        let pdfPageFrame = self.bounds
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageFrame, nil)
+        UIGraphicsBeginPDFPageWithInfo(pdfPageFrame, nil)
+        guard let pdfContext = UIGraphicsGetCurrentContext() else { return Data() }
+        self.layer.render(in: pdfContext)
+        UIGraphicsEndPDFContext()
+        return pdfData as Data
     }
     
     // Save pdf file in document directory

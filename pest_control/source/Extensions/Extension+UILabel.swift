@@ -31,14 +31,16 @@ extension UILabel {
         }
     }
     
-    func underlineAndLineHeight(lineHeightMultiply: CGFloat = 1.3) {
+    func underlineAndLineHeight(lineHeightMultiply: CGFloat = 2) {
         if let textString = self.text {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = lineHeightMultiply
             let attributedString = NSMutableAttributedString(string: textString)
             attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
+            
+            let dashed =  NSUnderlineStyle.patternDash.rawValue | NSUnderlineStyle.single.rawValue
             attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
-                                          value: NSUnderlineStyle.single.rawValue,
+                                          value: dashed,
                                           range: NSRange(location: 0, length: attributedString.length))
             self.attributedText = attributedString
         }
