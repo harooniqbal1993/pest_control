@@ -71,4 +71,9 @@ extension PersonalInformationViewController: UITextFieldDelegate, UITextViewDele
         }
 
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

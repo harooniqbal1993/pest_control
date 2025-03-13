@@ -28,6 +28,7 @@
 		43A72BC82D622AB700E50E96 /* pest_controlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A72BC72D622AB700E50E96 /* pest_controlTests.swift */; };
 		43A72BD22D622AB700E50E96 /* pest_controlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A72BD12D622AB700E50E96 /* pest_controlUITests.swift */; };
 		43A72BD42D622AB700E50E96 /* pest_controlUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A72BD32D622AB700E50E96 /* pest_controlUITestsLaunchTests.swift */; };
+		43A9DA6D2D81F5A10083AC9C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43A9DA6C2D81F5A10083AC9C /* IQKeyboardManagerSwift */; };
 		43B14B692D649F8D00FF6237 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B14B682D649F8D00FF6237 /* PageViewController.swift */; };
 		43D92D382D6316A6003851DA /* ChemicalUsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D92D372D6316A6003851DA /* ChemicalUsedViewController.swift */; };
 		43D92D3A2D6320DA003851DA /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D92D392D6320DA003851DA /* PDFViewController.swift */; };
@@ -86,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43766DF62D6C8CAD005687FD /* SwiftSignatureView in Frameworks */,
+				43A9DA6D2D81F5A10083AC9C /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +223,7 @@
 			name = pest_control;
 			packageProductDependencies = (
 				43766DF52D6C8CAD005687FD /* SwiftSignatureView */,
+				43A9DA6C2D81F5A10083AC9C /* IQKeyboardManagerSwift */,
 			);
 			productName = pest_control;
 			productReference = 43A72BAA2D622AB500E50E96 /* pest_control.app */;
@@ -296,6 +299,7 @@
 			mainGroup = 43A72BA12D622AB500E50E96;
 			packageReferences = (
 				43766DF42D6C8CAD005687FD /* XCRemoteSwiftPackageReference "SwiftSignatureView" */,
+				43A9DA6B2D81F5A10083AC9C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 43A72BAB2D622AB500E50E96 /* Products */;
 			projectDirPath = "";
@@ -537,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48ZQ7CV8U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pest_control/Info.plist;
@@ -570,7 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48ZQ7CV8U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pest_control/Info.plist;
@@ -719,6 +723,14 @@
 				minimumVersion = 3.2.1;
 			};
 		};
+		43A9DA6B2D81F5A10083AC9C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -726,6 +738,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 43766DF42D6C8CAD005687FD /* XCRemoteSwiftPackageReference "SwiftSignatureView" */;
 			productName = SwiftSignatureView;
+		};
+		43A9DA6C2D81F5A10083AC9C /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43A9DA6B2D81F5A10083AC9C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

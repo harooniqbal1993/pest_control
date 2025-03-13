@@ -15,8 +15,8 @@ class InspectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        inspectionTextview.delegate = self
-//        recommendationTextview.delegate = self
+        inspectionTextview.delegate = self
+        recommendationTextview.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -25,8 +25,8 @@ class InspectionViewController: UIViewController {
     }
 }
 
-//extension InspectionViewController: UITextViewDelegate {
-//    
+extension InspectionViewController: UITextViewDelegate {
+    
 //    func textViewDidEndEditing(_ textView: UITextView) {
 //        if textView == inspectionTextview {
 //            GlobalData.sharedInstance.outputData.inspection = inspectionTextview.text
@@ -34,4 +34,9 @@ class InspectionViewController: UIViewController {
 //            GlobalData.sharedInstance.outputData.recommendation = recommendationTextview.text
 //        }
 //    }
-//}
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

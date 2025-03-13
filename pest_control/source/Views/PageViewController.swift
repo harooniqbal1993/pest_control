@@ -30,6 +30,9 @@ class PageViewController: UIViewController {
     @IBOutlet weak var stepCountLabel: UILabel!
     @IBOutlet weak var pagingView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var backLabel: UILabel!
     
     var pageController: UIPageViewController?
     var viewControllers: [UIViewController] = []
@@ -38,8 +41,17 @@ class PageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadViews()
         configureViewControllers()
         setupPageController()
+    }
+    
+    private func loadViews() {
+        nextButton.round()
+        backButton.round()
+        
+        backButton.isHidden = true
+        backLabel.isHidden = true
     }
     
     private func setupPageController() {
@@ -87,6 +99,20 @@ class PageViewController: UIViewController {
             stepCountLabel.text = "STEP \(currentPage + 1) of \(viewControllers.count)"
             pageController?.setViewControllers([viewControllers[currentPage]], direction: .forward, animated: true)
         }
+        
+        backLabel.isHidden = currentPage == 0
+        backButton.isHidden = currentPage == 0
+    }
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        if currentPage > 0 {
+            stepCountLabel.text = "STEP \(currentPage) of \(viewControllers.count)"
+            currentPage = currentPage - 1
+            pageController?.setViewControllers([viewControllers[currentPage]], direction: .reverse, animated: true)
+        }
+        
+        backLabel.isHidden = currentPage == 0
+        backButton.isHidden = currentPage == 0
     }
     
 }
