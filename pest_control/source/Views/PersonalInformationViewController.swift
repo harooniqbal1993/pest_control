@@ -24,6 +24,7 @@ class PersonalInformationViewController: UIViewController {
     @IBOutlet weak var treatAddressTextview: UITextView!
     @IBOutlet weak var postcodeTextfield: UITextField!
     @IBOutlet weak var treatmentTimeTextfield: UITextField!
+    @IBOutlet weak var addressTreatmentTextfield: UITextField!
     
     var personalInfo: PersonalInfo? = PersonalInfo()
     
@@ -38,16 +39,21 @@ class PersonalInformationViewController: UIViewController {
     }
     
     func configure() {
+        
         nameTextfield.delegate = self
         telephoneTextfield.delegate = self
         emailTextfield.delegate = self
         treatAddressTextview.delegate = self
         postcodeTextfield.delegate = self
         treatmentTimeTextfield.delegate = self
+        treatAddressTextview.delegate = self
+        addressTreatmentTextfield.delegate = self
+        
+        treatAddressTextview.border()
     }
 }
 
-extension PersonalInformationViewController: UITextFieldDelegate, UITextViewDelegate {
+extension PersonalInformationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == nameTextfield {
             personalInfo?.name = textField.text
@@ -74,6 +80,17 @@ extension PersonalInformationViewController: UITextFieldDelegate, UITextViewDele
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension PersonalInformationViewController: UITextViewDelegate {
+    /* Updated for Swift 4 */
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
 }

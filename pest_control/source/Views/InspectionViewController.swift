@@ -8,13 +8,13 @@
 import UIKit
 
 class InspectionViewController: UIViewController {
-
+    
     @IBOutlet weak var inspectionTextview: UITextView!
     @IBOutlet weak var recommendationTextview: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         inspectionTextview.delegate = self
         recommendationTextview.delegate = self
     }
@@ -27,16 +27,20 @@ class InspectionViewController: UIViewController {
 
 extension InspectionViewController: UITextViewDelegate {
     
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if textView == inspectionTextview {
-//            GlobalData.sharedInstance.outputData.inspection = inspectionTextview.text
-//        } else {
-//            GlobalData.sharedInstance.outputData.recommendation = recommendationTextview.text
-//        }
-//    }
+    //    func textViewDidEndEditing(_ textView: UITextView) {
+    //        if textView == inspectionTextview {
+    //            GlobalData.sharedInstance.outputData.inspection = inspectionTextview.text
+    //        } else {
+    //            GlobalData.sharedInstance.outputData.recommendation = recommendationTextview.text
+    //        }
+    //    }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    /* Updated for Swift 4 */
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
 }

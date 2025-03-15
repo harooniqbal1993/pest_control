@@ -108,6 +108,10 @@ class ChemicalUsedViewController: UIViewController {
         difanacoumUnitTextfield.delegate = self
         brodifacoumUnitTextfield.delegate = self
         bromadioloneUnitTextfield.delegate = self
+        otherTextField.delegate = self
+        difanacoumUnitTextfield2.delegate = self
+        brodifacoumUnitTextfield2.delegate = self
+        bromadioloneUnitTextfield2.delegate = self
         
         addTapGesture()
     }
