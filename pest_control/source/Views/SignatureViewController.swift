@@ -26,6 +26,9 @@ class SignatureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        clientNameTextField.delegate = self
+        workerNameTextField.delegate = self
 
     }
     
@@ -36,5 +39,13 @@ class SignatureViewController: UIViewController {
         signatureData?.workerSignature = workerSignatureView.getCroppedSignature()?.jpegData(compressionQuality: 0.5)
         
         GlobalData.sharedInstance.outputData.signatureData = signatureData
+    }
+}
+
+extension SignatureViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
