@@ -31,7 +31,7 @@ extension UILabel {
         }
     }
     
-    func underlineAndLineHeight(lineHeightMultiply: CGFloat = 2) {
+    func underlineAndLineHeight(lineHeightMultiply: CGFloat = 1.5, heading: String) {
         if let textString = self.text {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = lineHeightMultiply
@@ -42,6 +42,15 @@ extension UILabel {
             attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
                                           value: dashed,
                                           range: NSRange(location: 0, length: attributedString.length))
+            
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 17, weight: .bold), range: (textString as NSString).range(of: heading))
+            attributedString.addAttribute(.baselineOffset, value: 5, range: NSRange(location: 0, length: attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: (textString as NSString).range(of: heading))
+            
+//            let dashed =  NSUnderlineStyle.patternDash.rawValue | NSUnderlineStyle.single.rawValue
+//            attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
+//                                          value: dashed,
+//                                          range: NSRange(location: 0, length: attributedString.length))
             self.attributedText = attributedString
         }
     }
