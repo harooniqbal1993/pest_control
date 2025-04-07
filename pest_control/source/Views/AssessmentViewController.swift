@@ -21,6 +21,9 @@ struct AssessmentData {
     var smear: Bool = false
     var groundHole: Bool = false
     var sighting: Bool = false
+    var holeInCeiling: Bool = false
+    var holeAroundPipe: Bool = false
+    var chewedElectricWire: Bool = false
 }
 
 class AssessmentViewController: UIViewController {
@@ -45,6 +48,9 @@ class AssessmentViewController: UIViewController {
     @IBOutlet weak var smearCheckbox: UIButton!
     @IBOutlet weak var groundHoleCheckbox: UIButton!
     @IBOutlet weak var sightingCheckbox: UIButton!
+    @IBOutlet weak var holeInCeilingCheckbox: UIButton!
+    @IBOutlet weak var holeAroundPipeCheckbox: UIButton!
+    @IBOutlet weak var chewedElectricPipeCheckbox: UIButton!
     
     @IBOutlet weak var bodiesLabel: UILabel!
     @IBOutlet weak var dropingsLabel: UILabel!
@@ -52,6 +58,10 @@ class AssessmentViewController: UIViewController {
     @IBOutlet weak var smearLabel: UILabel!
     @IBOutlet weak var groundHoleLabel: UILabel!
     @IBOutlet weak var sightingLabel: UILabel!
+    @IBOutlet weak var holeInCeilingLabel: UILabel!
+    @IBOutlet weak var holeAroundPipeLabel: UILabel!
+    @IBOutlet weak var chewedElectricWireLabel: UILabel!
+    
     
     var assessmentData = AssessmentData()
     
@@ -68,6 +78,9 @@ class AssessmentViewController: UIViewController {
     var smear: Bool = false
     var groundHole: Bool = false
     var sighting: Bool = false
+    var holeInCeiling: Bool = false
+    var holeAroundPipe: Bool = false
+    var chewedElectricWire: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +110,9 @@ class AssessmentViewController: UIViewController {
         let smearTapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomethingOnTap))
         let groundHoleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomethingOnTap))
         let sighingTapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomethingOnTap))
+        let holeInCeilingTapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomethingOnTap))
+        let holeAroundPipeTapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomethingOnTap))
+        let chewedElectricWireTapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomethingOnTap))
         
         childrenLabel.isUserInteractionEnabled = true
         childrenLabel.addGestureRecognizer(childrenTapGesture)
@@ -133,6 +149,15 @@ class AssessmentViewController: UIViewController {
         
         sightingLabel.isUserInteractionEnabled = true
         sightingLabel.addGestureRecognizer(sighingTapGesture)
+        
+        holeInCeilingLabel.isUserInteractionEnabled = true
+        holeInCeilingLabel.addGestureRecognizer(holeInCeilingTapGesture)
+        
+        holeAroundPipeLabel.isUserInteractionEnabled = true
+        holeAroundPipeLabel.addGestureRecognizer(holeAroundPipeTapGesture)
+        
+        chewedElectricWireLabel.isUserInteractionEnabled = true
+        chewedElectricWireLabel.addGestureRecognizer(chewedElectricWireTapGesture)
     }
     
     func handleCheckboxTap(tag: Int) {
@@ -258,6 +283,50 @@ class AssessmentViewController: UIViewController {
             }
             break
             
+        case 12:
+            sighting = !sighting
+            assessmentData.sighting = sighting
+            
+            if sightingCheckbox.currentImage == UIImage(resource: .checkboxChecked) {
+                sightingCheckbox.setImage(UIImage(resource: .checkboxUnchecked), for: .normal)
+            } else {
+                sightingCheckbox.setImage(UIImage(resource: .checkboxChecked), for: .normal)
+            }
+            break
+            
+        case 13:
+            holeInCeiling = !holeInCeiling
+            assessmentData.holeInCeiling = holeInCeiling
+            
+            if holeInCeilingCheckbox.currentImage == UIImage(resource: .checkboxChecked) {
+                holeInCeilingCheckbox.setImage(UIImage(resource: .checkboxUnchecked), for: .normal)
+            } else {
+                holeInCeilingCheckbox.setImage(UIImage(resource: .checkboxChecked), for: .normal)
+            }
+            break
+            
+        case 14:
+            holeAroundPipe = !holeAroundPipe
+            assessmentData.holeAroundPipe = holeAroundPipe
+            
+            if holeAroundPipeCheckbox.currentImage == UIImage(resource: .checkboxChecked) {
+                holeAroundPipeCheckbox.setImage(UIImage(resource: .checkboxUnchecked), for: .normal)
+            } else {
+                holeAroundPipeCheckbox.setImage(UIImage(resource: .checkboxChecked), for: .normal)
+            }
+            break
+            
+        case 15:
+            chewedElectricWire = !chewedElectricWire
+            assessmentData.chewedElectricWire = chewedElectricWire
+            
+            if chewedElectricPipeCheckbox.currentImage == UIImage(resource: .checkboxChecked) {
+                chewedElectricPipeCheckbox.setImage(UIImage(resource: .checkboxUnchecked), for: .normal)
+            } else {
+                chewedElectricPipeCheckbox.setImage(UIImage(resource: .checkboxChecked), for: .normal)
+            }
+            break
+            
         default:
             sighting = !sighting
             assessmentData.sighting = sighting
@@ -333,6 +402,26 @@ class AssessmentViewController: UIViewController {
         case 11:
             groundHole = !groundHole
             assessmentData.groundHole = groundHole
+            break
+            
+        case 12:
+            sighting = !sighting
+            assessmentData.sighting = sighting
+            break
+            
+        case 13:
+            holeInCeiling = !holeInCeiling
+            assessmentData.holeInCeiling = holeInCeiling
+            break
+            
+        case 14:
+            holeAroundPipe = !holeAroundPipe
+            assessmentData.holeAroundPipe = holeAroundPipe
+            break
+            
+        case 15:
+            chewedElectricWire = !chewedElectricWire
+            assessmentData.chewedElectricWire = chewedElectricWire
             break
             
         default:

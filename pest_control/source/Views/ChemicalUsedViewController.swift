@@ -56,6 +56,9 @@ class ChemicalUsedViewController: UIViewController {
     @IBOutlet weak var tetramethrinCheckbox: UIButton!
     @IBOutlet weak var fenprieCheckbox: UIButton!
     @IBOutlet weak var OtherCheckbox: UIButton!
+    @IBOutlet weak var difanacoumCheckbox: UIButton!
+    @IBOutlet weak var brodifacoumCheckbox: UIButton!
+    @IBOutlet weak var bromadiolineCheckbox: UIButton!
     
     @IBOutlet weak var miceLabel: UILabel!
     @IBOutlet weak var ratsLabel: UILabel!
@@ -302,6 +305,50 @@ class ChemicalUsedViewController: UIViewController {
                 fenprieCheckbox.setImage(UIImage(resource: .checkboxUnchecked), for: .normal)
             } else {
                 fenprieCheckbox.setImage(UIImage(resource: .checkboxChecked), for: .normal)
+            }
+            break
+            
+        case 12:
+            other = !other
+            pestType?.other = other
+            
+            if OtherCheckbox.currentImage == UIImage(resource: .checkboxChecked) {
+                OtherCheckbox.setImage(UIImage(resource: .checkboxUnchecked), for: .normal)
+            } else {
+                OtherCheckbox.setImage(UIImage(resource: .checkboxChecked), for: .normal)
+            }
+            break
+            
+        case 13:
+            difenacoum = !difenacoum
+            pestType?.difenacoum = difenacoum
+            
+            if difanacoumCheckbox.currentImage == UIImage(resource: .cross) {
+                difanacoumCheckbox.setImage(nil, for: .normal)
+            } else {
+                difanacoumCheckbox.setImage(UIImage(resource: .cross), for: .normal)
+            }
+            break
+            
+        case 14:
+            brodifacoum = !brodifacoum
+            pestType?.brodifacoum = brodifacoum
+            
+            if brodifacoumCheckbox.currentImage == UIImage(resource: .cross) {
+                brodifacoumCheckbox.setImage(nil, for: .normal)
+            } else {
+                brodifacoumCheckbox.setImage(UIImage(resource: .cross), for: .normal)
+            }
+            break
+            
+        case 15:
+            bromadiolone = !bromadiolone
+            pestType?.bromadiolone = bromadiolone
+            
+            if bromadiolineCheckbox.currentImage == UIImage(resource: .cross) {
+                bromadiolineCheckbox.setImage(nil, for: .normal)
+            } else {
+                bromadiolineCheckbox.setImage(UIImage(resource: .cross), for: .normal)
             }
             break
           

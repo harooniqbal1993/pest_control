@@ -94,6 +94,15 @@ class PDFLayout: UIView {
     @IBOutlet weak var foodImageview: UIImageView!
     @IBOutlet weak var sightingLabel: UILabel!
     @IBOutlet weak var sightingImageview: UIImageView!
+    @IBOutlet weak var holeInCeiling: UILabel!
+    @IBOutlet weak var holeInCeilingImageView: UIImageView!
+    @IBOutlet weak var holeAroundPipeLabel: UILabel!
+    @IBOutlet weak var holeAroundPipeImageView: UIImageView!
+    @IBOutlet weak var chewedElectricWireLabel: UILabel!
+    @IBOutlet weak var chewedElectricWireImageView: UIImageView!
+    @IBOutlet weak var difenacoumCheckbox: UIButton!
+    @IBOutlet weak var brodifacoumCheckbox: UIButton!
+    @IBOutlet weak var bromadioloneCheckbox: UIButton!
     
     let outputData = GlobalData.sharedInstance.outputData
     
@@ -139,6 +148,16 @@ class PDFLayout: UIView {
         foodImageview.border()
         sightingLabel.border()
         sightingImageview.border()
+        holeInCeiling.border()
+        holeInCeilingImageView.border()
+        holeAroundPipeLabel.border()
+        holeAroundPipeImageView.border()
+        chewedElectricWireLabel.border()
+        chewedElectricWireImageView.border()
+        
+//        difenacoumCheckbox.border(width: 2.0)
+//        brodifacoumCheckbox.border(width: 2.0)
+//        bromadioloneCheckbox.border(width: 2.0)
     }
     
     func fillData() {
@@ -165,6 +184,9 @@ class PDFLayout: UIView {
         difenacoumUnitTextfield.text = outputData.pestType?.difenacoumUnit
         brodifacoumUnitTextfield.text = outputData.pestType?.brodifacoumUnit
         bromadioloneUnitTextfield.text = outputData.pestType?.bromadioloneUnit
+        difenacoumCheckbox.setImage((outputData.pestType?.difenacoum ?? false) ? UIImage(resource: .cross) : nil, for: .normal)
+        brodifacoumCheckbox.setImage((outputData.pestType?.brodifacoum ?? false) ? UIImage(resource: .cross) : nil, for: .normal)
+        bromadioloneCheckbox.setImage((outputData.pestType?.bromadiolone ?? false) ? UIImage(resource: .cross) : nil, for: .normal)
         
         indoxacarbCheckbox.setImage((outputData.pestType?.indoxacarb ?? false) ? UIImage(resource: .checkboxChecked) : UIImage(resource: .checkboxUnchecked), for: .normal)
         bendiocarbCheckbox.setImage((outputData.pestType?.bendiocarb ?? false) ? UIImage(resource: .checkboxChecked) : UIImage(resource: .checkboxUnchecked), for: .normal)
@@ -192,6 +214,9 @@ class PDFLayout: UIView {
         smearCheckbox.image = (outputData.assessmentData?.smear ?? false) ? UIImage(resource: .cross) : nil // UIImage(resource: .checkboxUnchecked)
         groundWholeCheckbox.image = (outputData.assessmentData?.groundHole ?? false) ? UIImage(resource: .cross) : nil // UIImage(resource: .checkboxUnchecked)
         sightingCheckbox.image = (outputData.assessmentData?.sighting ?? false) ? UIImage(resource: .cross) : nil // UIImage(resource: .checkboxUnchecked)
+        holeInCeilingImageView.image = (outputData.assessmentData?.holeInCeiling ?? false) ? UIImage(resource: .cross) : nil
+        holeAroundPipeImageView.image = (outputData.assessmentData?.holeAroundPipe ?? false) ? UIImage(resource: .cross) : nil
+        chewedElectricWireImageView.image = (outputData.assessmentData?.chewedElectricWire ?? false) ? UIImage(resource: .cross) : nil
         
         inspectionValueLabel.text = outputData.inspection
         recommendationValueLabel.text = outputData.recommendation
@@ -213,6 +238,5 @@ class PDFLayout: UIView {
         if let clientSignature = outputData.signatureData?.clientSignature {
             clientSignatureImage.image = UIImage(data: clientSignature)
         }
-        
     }
 }

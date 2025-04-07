@@ -65,6 +65,8 @@ extension PersonalInformationViewController: UITextFieldDelegate {
             personalInfo?.postcode = textField.text
         } else if textField == treatmentTimeTextfield {
             personalInfo?.treatmentTime = textField.text
+        } else if textField == addressTreatmentTextfield {
+            personalInfo?.treatmentAddress = textField.text
         } else {
             
         }
