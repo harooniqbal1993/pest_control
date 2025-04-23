@@ -44,6 +44,8 @@ class PageViewController: UIViewController {
         loadViews()
         configureViewControllers()
         setupPageController()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onFormCompletion), name: Notification.Name("onFormCompletion"), object: nil)
     }
     
     private func loadViews() {
@@ -71,8 +73,8 @@ class PageViewController: UIViewController {
         self.pageController?.view.trailingAnchor.constraint(equalTo: pagingView!.trailingAnchor, constant: 0).isActive = true
     }
     
-    func configureFirstVC() {
-        self.pageController?.setViewControllers([viewControllers[0]], direction: .forward, animated: true, completion: nil)
+    func configureFirstVC(animated: Bool = true) {
+        self.pageController?.setViewControllers([viewControllers[0]], direction: .forward, animated: animated, completion: nil)
     }
     
     func configureViewControllers() {
@@ -113,6 +115,16 @@ class PageViewController: UIViewController {
         
         backLabel.isHidden = currentPage == 0
         backButton.isHidden = currentPage == 0
+    }
+    
+    @objc func onFormCompletion(notification: Notification) {
+//        configureFirstVC(animated: false)
+        currentPage = 0
+        viewDidLoad()
+//        pagingView.subviews.forEach { $0.removeFromSuperview() }
+////        pageController?.view.removeFromSuperview()
+//        pageController = nil
+//        setupPageController()
     }
     
 }

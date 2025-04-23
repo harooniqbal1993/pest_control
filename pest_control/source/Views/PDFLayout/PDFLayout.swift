@@ -70,6 +70,7 @@ class PDFLayout: UIView {
     @IBOutlet weak var evidenceContainer: UILabel!
     @IBOutlet weak var evidenceImageview: UIImageView!
     
+    @IBOutlet weak var proofImage: UIImageView!
     @IBOutlet weak var childrenLabel: UILabel!
     @IBOutlet weak var childrenImageview: UIImageView!
     @IBOutlet weak var bodiesLabel: UILabel!
@@ -237,6 +238,10 @@ class PDFLayout: UIView {
         
         if let clientSignature = outputData.signatureData?.clientSignature {
             clientSignatureImage.image = UIImage(data: clientSignature)
+        }
+        
+        if let data = outputData.signatureData?.proofImage {
+            proofImage.image = UIImage(data: data)
         }
     }
 }

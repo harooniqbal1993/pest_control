@@ -11,9 +11,12 @@ class OutputViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backButton.round()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,11 +49,29 @@ class OutputViewController: UIViewController {
 //        pdfView.document = pdfDocument
 //    }
     
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+    }
+    
     @IBAction func downloadTapped(_ sender: UIButton) {
         let path = contentView.exportAsPdfFromView()
         print(path)
         
         let activityViewController = UIActivityViewController(activityItems: ["Lazer Pest Control", contentView.pdfViewToData()], applicationActivities: nil)
+        
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                print("Saved successfully")
+                return
+            }
+            self.dismiss(animated: true) {
+                NotificationCenter.default.post(name: NSNotification.Name("onFormCompletion"), object: "Object", userInfo: ["key":"Value"])
+            }
+            
+            // User completed activity
+        }
         present(activityViewController, animated: true, completion: nil)
     }
     
